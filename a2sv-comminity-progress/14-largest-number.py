@@ -11,13 +11,12 @@ class Sorter:
         index = self.partition(pivot, left, right)
         self.qs(left, index-1)
         self.qs(index, right)
- 
+
+    
     def partition(self, pivot, left, right):
         while left <= right:
-            while (str(self.arr[left]) + str(pivot)) < ( str(pivot) + str(self.arr[left])): left += 1
-            while (str(self.arr[right]) + str(pivot)) > ( str(pivot) + str(self.arr[right])): right += 1
-            # while self.arr[right] > pivot: right -= 1
-
+            while (str(pivot) + str(self.arr[left]) < (str(self.arr[left]) + str(pivot))): left += 1
+            while (str(pivot) + str(self.arr[right]) > (str(self.arr[right]) + str(pivot))): right -= 1
             if (left <= right):
                 (self.arr[left], self.arr[right]) = (self.arr[right], self.arr[left])
                 left +=1
@@ -27,3 +26,6 @@ class Sorter:
 
 class Solution:
     def largestNumber(self, nums: list[int]) -> str:
+        ans = (''.join([str(x) for x in Sorter().quickSort(nums)])).lstrip()
+        if (int(ans)): return ans
+        return '0'

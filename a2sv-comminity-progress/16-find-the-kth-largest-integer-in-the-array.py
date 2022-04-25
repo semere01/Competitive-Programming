@@ -29,6 +29,6 @@ class Sorter:
 class Solution:
     def kthLargestNumber(self, nums: List[str], k: int) -> str:
         pos = len(nums) - k
-        return [x for x in Solution().quickSort([int(y) for y in nums])][pos]
+        return [x for x in Sorter().quickSort([int(y) for y in nums])][pos]
 
         

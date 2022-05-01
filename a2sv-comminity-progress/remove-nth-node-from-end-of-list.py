@@ -1,13 +1,18 @@
 class Solution:
-  def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-    slow = head
-    fast = head
-    for _ in range(n):
-      fast = fast.next
-    if not fast:
-      return head.next
-    while fast.next:
-      slow = slow.next
-      fast = fast.next
-    slow.next = slow.next.next
-    return head
+    # def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(self, head, n):
+        print("n: ", n)
+        if not head.next: return 
+        pointer = head
+        cache = [None] * (n+1)
+        while pointer:
+            cache.pop(0)
+            cache.append(pointer)
+            pointer = pointer.next
+                
+        print(f"len(cache)  = {len(cache)}")
+        if (head==cache[-1*n]): return head.next
+        elif len(cache) == 2: cache[0].next = None
+        else: cache[0].next = cache[2]
+        return head
+

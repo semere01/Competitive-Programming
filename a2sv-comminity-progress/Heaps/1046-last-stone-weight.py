@@ -1,7 +1,14 @@
+class Solution:
+    def lastStoneWeight(self, stones):  # : List[int]) -> int:
+        heap = MaxHeap(stones)
+        while(len(heap.data) > 1):
+            s = abs(heap.pop() - heap.pop())
+            if s:
+                heap.add(s)
 
-
-import math
-
+        if (len(heap.data)):
+            return heap.data[0]
+        return 0
 
 class MaxHeap:
     def __init__(self, arr):
@@ -13,14 +20,10 @@ class MaxHeap:
         if len(self.data) == 0:
             self.data = [val]
             return
-        # self.data.insert(0, val)
         self.data.append(val)
         self.bubbleUp(len(self.data)-1)
-        # if not self.solve():
-        #     print(self.data)
-        print(self.solve())
 
-    def solve(self):
+    def isValidHeap(self) -> bool:
         nums = self.data
         n = len(nums)
         for i in range(n):
@@ -75,18 +78,3 @@ class MaxHeap:
             self.swap(parent, currentIndex)
             return self.bubbleUp(parent)
 
-class Solution:
-    def lastStoneWeight(self, stones):  # : List[int]) -> int:
-        heap = MaxHeap(stones)
-        while(len(heap.data) > 1):
-            s = abs(heap.pop() - heap.pop())
-            if s:
-                heap.add(s)
-
-        if (len(heap.data)):
-            return heap.data[0]
-        return 0
-
-
-print(Solution().lastStoneWeight(
-[434,667,378,919,212,902,240,257,208,996,411,222,557,634,425,949,755,833,785,886,40,159,932,157,764,916,85,300,130,278]))

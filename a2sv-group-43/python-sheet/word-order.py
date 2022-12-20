@@ -10,6 +10,7 @@ for i in range(int(n)):
         line.append(word)
 
 print(len(line))
+
 if (len(line) > 1):
     for i in range(len(line)-1):
         print(f"{bank[line[i]]} ", end="")

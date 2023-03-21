@@ -25,10 +25,6 @@ class TopVotedCandidate:
         right = len(self.ranges)
         while True:
             i = left + ((right-left) // 2)
-            if(t==12):
-                print(f"(left, right) - ({left}, {right})")
-                print(f"I - {i}")
-
             if (self.ranges[i][0] == t):
                 return self.ranges[i][1]
             if (i+1 < len(self.ranges) and self.ranges[i][0] < t and self.ranges[i+1][0] > t):
